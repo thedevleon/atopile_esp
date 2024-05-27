@@ -1,0 +1,19 @@
+component LIS2DH12TR:
+    # component LIS2DH12TR
+    footprint = "LGA-12_L2.0-W2.0-P0.50-BL"
+    lcsc_id = "C110926"
+    mpn = "C110926"
+    # pins
+    signal SCL_slash_SPC ~ pin 1
+    signal CS ~ pin 2
+    signal SDO_slash_SA0 ~ pin 3
+    signal SDA_slash_SDI_slash_SDO ~ pin 4
+    signal RES ~ pin 5
+    signal GND ~ pin 6
+    GND ~ pin 7
+    GND ~ pin 8
+    signal VDD ~ pin 9
+    signal VDD_IO ~ pin 10
+    signal INT2 ~ pin 11
+    signal INT1 ~ pin 12
+

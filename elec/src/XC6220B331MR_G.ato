@@ -1,0 +1,45 @@
+import Power from "generics/interfaces.ato"
+import FixedLDO from "generics/regulators.ato"
+import Capacitor from "generics/capacitors.ato"
+
+component _XC6220B331MR_G:
+    # component XC6220B331MR_G
+    footprint = "SOT-25_L3.0-W1.6-P0.95-LS2.8-TL"
+    lcsc_id = "C86534"
+    mpn = "C86534"
+    # pins
+    signal VIN ~ pin 1
+    signal VSS ~ pin 2
+    signal CE ~ pin 3
+    signal NC ~ pin 4
+    signal VOUT ~ pin 5
+
+
+module XC6220B331MR from FixedLDO:
+    """
+    Voltage regulator with fixed 3.3V output,
+    900mA max current, 25uA quiescient current
+    max 6.5V input voltage, 0.45V dropout voltage
+    """
+    v_in: voltage
+
+    assert v_in within 3.3V to 6.5V
+
+    ldo = new _XC6220B331MR_G
+
+    power_in.vcc ~ ldo.VIN
+    power_in.vcc ~ ldo.CE
+    power_in.gnd ~ ldo.VSS
+    power_out.vcc ~ ldo.VOUT
+
+    # input cap
+    input_bypass = new Capacitor
+    power_in ~ input_bypass.power
+    input_bypass.value = 10uF +/- 20%
+    input_bypass.footprint = "C0603"
+
+    # output cap
+    output_bypass = new Capacitor
+    power_out ~ output_bypass.power
+    output_bypass.value = 10uF +/- 20%
+    output_bypass.footprint = "C0603"

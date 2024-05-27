@@ -3,4 +3,11 @@ builds:
   default:
     entry: elec/src/show-and-tell.ato:ShowAndTell
 dependencies:
-- generics
+- name: generics
+  version_spec: '@09ad6baeaab93d53b9b6c90069ac750f4161d76f'
+  link_broken: true
+  path: elec/src/generics
+- name: usb-connectors
+  version_spec: '@53496dede5b600bd799a0afe199eaa514ebdc5f6'
+  link_broken: true
+  path: elec/src/usb-connectors
